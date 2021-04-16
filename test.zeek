@@ -4,7 +4,7 @@ event http_reply(c: connection, version: string, code: count, reason: string)
 		SumStats::observe("response",[$host=c$id$orig_h],[$num=1]);
 		if(code == 404)
 		{
-			SumStats::observe("response404",SumStats::Key(),[$num=1]);
+			SumStats::observe("response404",[$host=c$id$orig_h],[$num=1]);
 			SumStats::observe("unique404",[$host=c$id$orig_h],[$str=c$http$uri]);
 		}
 	}
